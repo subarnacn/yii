@@ -1,7 +1,7 @@
 <?php
 namespace frontend\models;
 
-use common\models\Book;
+//use models\AddForm;
 use yii\base\Model;
 use Yii;
 
@@ -24,7 +24,7 @@ class AddForm extends Model
         return [
             ['bookname', 'filter', 'filter' => 'trim'],
             ['bookname', 'required'],
-            ['bookname', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This bookname has already been taken.'],
+            //['bookname', 'unique', //'targetClass' => '\common\models\Add', 'message' => 'This bookname has already been taken.'],
             ['bookname', 'string', 'min' => 2, 'max' => 255],
 
             ['authorname', 'filter', 'filter' => 'trim'],
@@ -47,18 +47,19 @@ class AddForm extends Model
     /**
      * Signs user up.
      *
-     * @return User|null the saved model or null if saving fails
+     * @return Book|null the saved model or null if saving fails
      */
-    public function signup()
+    public function add()
     {
         if ($this->validate()) {
-            $user = new User();
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->setPassword($this->password);
-            $user->generateAuthKey();
-            if ($user->save()) {
-                return $user;
+            $book = new Book();
+            $book->bookname = $this->bookname;
+            $book->authorname = $this->authorname;
+            $book->about = $this->about;
+            $book->page = $this->page;
+            // $book->generateAuthKey();
+            if ($book->save()) {
+                return $book;
             }
         }
 
