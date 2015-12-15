@@ -215,21 +215,21 @@ class SiteController extends Controller
     public function actionBooks()
     {
         return $this->render('book');
+
+        
     }
 
     public function actionAdd()
     {
-         if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        //  if (!\Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }validate
 
         $model = new AddForm();
-        if ($model->load(Yii::$app->request->post()) && $model->add()) {
-            return $this->goBack();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            return $this->render('add', ['model' => $model]);
         } else {
-            return $this->render('add', [
-                'model' => $model,
-            ]);
+            return $this->render('add', ['model' => $model]);
         }
     }
 }

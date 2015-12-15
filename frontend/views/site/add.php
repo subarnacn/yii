@@ -37,3 +37,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+
+<p>You have entered the following information:</p>
+
+<ul>
+    <li><label>Bookname</label>: <?= Html::encode($model->bookname) ?></li>
+    <li><label>Authorname</label>: <?= Html::encode($model->authorname) ?></li>
+    <li><label>About</label>: <?= Html::encode($model->about) ?></li>
+    <li><label>Pages</label>: <?= Html::encode($model->page) ?></li>
+</ul>

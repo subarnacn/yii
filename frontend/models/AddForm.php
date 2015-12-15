@@ -1,9 +1,9 @@
 <?php
 namespace frontend\models;
 
-//use models\AddForm;
-use yii\base\Model;
 use Yii;
+use yii\base\Model;
+
 
 /**
  * Signup form
@@ -49,17 +49,17 @@ class AddForm extends Model
      *
      * @return Book|null the saved model or null if saving fails
      */
-    public function add()
+    public function AddForm()
     {
         if ($this->validate()) {
-            $book = new Book();
-            $book->bookname = $this->bookname;
-            $book->authorname = $this->authorname;
-            $book->about = $this->about;
-            $book->page = $this->page;
+            $model = new AddForm();
+            $model->bookname = $this->bookname;
+            $model->authorname = $this->authorname;
+            $model->about = $this->about;
+            $model->page = $this->page;
             // $book->generateAuthKey();
-            if ($book->save()) {
-                return $book;
+            if ($model->save()) {
+                return $model;
             }
         }
 
